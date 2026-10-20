@@ -1,4 +1,4 @@
-# FIN 41350 — Lab 14 Portfolio Baselines
+# FIN 43900 — Lab 14 Portfolio Baselines (task heading says FIN 41350)
 
 ## Status and source limits
 
@@ -126,4 +126,4 @@ These four funds form a coherent, investable starting universe for the **young p
 
 ## READY FOR SUBMISSION — GitHub links and checkout
 
-The instructor's actual `## Checkout — on GitHub` instruction is: **GitHub links of your files: md, py and/or other files as needed.** The Tuesday files for this implementation are `portfolio.py`, `mandate.py`, `test_portfolio.py`, and `lab14-notes.md`. Use direct links to the relevant `.md` and `.py` files once published to the course repository; `prices.csv` is Thursday preparation, not the Tuesday checkout. The source assignment is [Lab 14 → Checkout](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-09/lab-14-portfolio-baselines.md#checkout--on-github).
+The instructor's actual `## Checkout — on GitHub` instruction is: **GitHub links of your files: md, py and/or other files as needed.** The verified Tuesday files are [portfolio.py](https://github.com/cmainville/FIN43900/blob/main/portfolio.py), [mandate.py](https://github.com/cmainville/FIN43900/blob/main/mandate.py), [test_portfolio.py](https://github.com/cmainville/FIN43900/blob/main/test_portfolio.py), and [lab14-notes.md](https://github.com/cmainville/FIN43900/blob/main/lab14-notes.md). The published links were fetched from the connected repository after upload. `prices.csv` is Thursday preparation, not the Tuesday checkout. The source assignment is [Lab 14 → Checkout](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-09/lab-14-portfolio-baselines.md#checkout--on-github). The technical files are ready; the personal answer spaces and partner activities above remain for the student.
