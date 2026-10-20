@@ -119,9 +119,21 @@ The student has selected **BIL, IEF, LQD, and VT** as the four-fund universe for
 
 **Target:** 60 completed months, October 2021 through September 2026 inclusive, with USD adjusted closes for all four ETFs. The output dates would be calendar month-ends (`2021-10-31` through `2026-09-30`); these labels can differ from the source's final trading dates. October 2026 is excluded.
 
-**Retrieval attempt: 2026-10-20.** The instructor specifies Yahoo Finance **Historical Data → Monthly → Adj Close**. A normal request to [Yahoo's BIL monthly chart endpoint](https://query1.finance.yahoo.com/v8/finance/chart/BIL?range=5y&interval=1mo&events=history&includeAdjustedClose=true) returned HTTP **429**. No BIL, IEF, LQD, or VT adjusted-price file was downloaded. The fund pages above establish fund identities and roles, not historical adjusted-price observations. [Yahoo's definition of Adj Close](https://in.help.yahoo.com/kb/finance/adjusted-close-sln28256.html) accounts for splits and dividends. That methodology would be comparable if all four series came from Yahoo's same `Adj Close` field, but the actual four series have **not** been obtained or compared.
+**Source review: 2026-10-20.** The attached `prices_digrin_candidate.csv` has 60 monthly rows and 240 prices transcribed from Digrin's [BIL](https://www.digrin.com/stocks/detail/BIL/price), [IEF](https://www.digrin.com/stocks/detail/IEF/price), [LQD](https://www.digrin.com/stocks/detail/LQD/price), and [VT](https://www.digrin.com/stocks/detail/VT/price) **“Adjusted price”** tables. I compared every candidate value with the corresponding published Digrin month and found **240/240 exact matches at Digrin's displayed two-decimal precision**. The dates in the candidate file are calendar month-end labels; Digrin displays only month/year, so its pages do **not** establish the underlying final trading dates. Its price pages distinguish “Adjusted price” from “Real price” but do not define the corporate-action adjustment method sufficiently to prove equivalence to Yahoo `Adj Close`. The candidate is **not** a direct Yahoo export.
 
-| Ticker | Yahoo historical-data page | Price download date | Verified monthly Adj Close observations |
+The instructor specifies Yahoo Finance **Historical Data → Monthly → Adj Close**. A normal request to [Yahoo's BIL monthly chart endpoint](https://query1.finance.yahoo.com/v8/finance/chart/BIL?range=5y&interval=1mo&events=history&includeAdjustedClose=true) returned HTTP **429**; direct Yahoo historical pages also restricted access during this review. No complete, dated Yahoo export was obtained. [Yahoo's definition of Adj Close](https://in.help.yahoo.com/kb/finance/adjusted-close-sln28256.html) accounts for splits and dividends. Yahoo's indexed historical records allowed independent checks of the documented discrepancies:
+
+| Final trading date | ETF | Digrin candidate | Yahoo ordinary Close | Yahoo Adj Close | Finding |
+|---|---|---:|---:|---:|---|
+| 2026-09-30 | BIL | 91.64 | 91.64 | 91.38 | Candidate is ordinary Close, not Yahoo Adj Close. |
+| 2026-09-30 | IEF | 89.00 | 89.31 | 89.00 | Candidate matches Yahoo Adj Close. |
+| 2026-09-30 | LQD | 102.18 | 102.18 | 101.74 | Candidate is ordinary Close, not Yahoo Adj Close. |
+| 2026-09-30 | VT | 157.85 | 157.85 | 157.85 | Candidate matches both fields. |
+| 2026-04-30 | LQD | 106.73 | 108.85 | 106.27 | Candidate matches neither Yahoo field. |
+
+Sources for those exact dated observations: [Yahoo BIL](https://hk.finance.yahoo.com/quote/BIL/history/), [Yahoo IEF](https://finance.yahoo.com/quote/IEF/history/), [Yahoo LQD](https://finance.yahoo.com/quote/LQD/history/), and [Yahoo VT](https://finance.yahoo.com/quote/VT/history/). These checks establish a real adjustment mismatch; they do not provide the other 235 dated observations needed to replace the candidate.
+
+| Ticker | Yahoo historical-data page | Full-series download date | Verified full-series monthly Adj Close observations |
 |---|---|---|---:|
 | BIL | [Yahoo BIL](https://finance.yahoo.com/quote/BIL/history/) | None | 0 of 60 |
 | IEF | [Yahoo IEF](https://finance.yahoo.com/quote/IEF/history/) | None | 0 of 60 |
@@ -130,7 +142,7 @@ The student has selected **BIL, IEF, LQD, and VT** as the four-fund universe for
 
 Documented alternatives include [Alpha Vantage's `TIME_SERIES_MONTHLY_ADJUSTED`](https://www.alphavantage.co/documentation/), [Tiingo's adjusted end-of-day prices](https://www.tiingo.com/documentation/end-of-day), and [EODHD's adjusted close](https://eodhd.com/financial-apis/api-for-historical-data-and-volumes). They identify dividend/split-adjusted fields but require account credentials or entitlements for these four complete histories; none was available for this work. No ordinary `Close` values were substituted.
 
-**Validation report (2026-10-20):** source prices unavailable; output `prices.csv` absent; observation count **0/60**; requested date range **2021-10-31 to 2026-09-30**; valid observations **BIL 0, IEF 0, LQD 0, VT 0**; missing months **60 per ETF**; duplicate months **not assessable**; shared monthly index **not established**; overall **FAIL / incomplete**. This is an availability failure, not a claim that a bad dataset was validated.
+**Validation report (2026-10-20):** `python import_prices.py --validate-only prices_digrin_candidate.csv` reported **PASS for structure and values only**: exact columns `Date,BIL,IEF,LQD,VT`; **60** rows; **2021-10-31 to 2026-09-30** in ascending calendar-month order; **60 finite positive prices per ETF**; no missing or duplicate months; and one shared labeled monthly index. Full source-table comparison found **240/240 Digrin matches**. **Provenance/adjustment/sampling validation: FAIL / incomplete** because Digrin's monthly pages omit exact trading dates and the independently checked Yahoo `Adj Close` values disagree at BIL and LQD in September 2026 and LQD in April 2026. No observations were changed or rescaled. Final `prices.csv` remains **absent**; the candidate is **not cleared for submission**.
 
 [`import_prices.py`](https://github.com/cmainville/FIN43900/blob/main/import_prices.py) is a standard-library importer for four **manually downloaded Yahoo CSV files**. It requires the `Adj Close` column, accepts either monthly files or daily files (selecting the final available trading-day observation of each month), rejects invalid or missing values and months, labels output rows at calendar month-end, and writes `prices.csv` only after all 60 months pass validation. Run it after obtaining the four authentic files:
 
@@ -139,7 +151,7 @@ python import_prices.py --frequency monthly --bil BIL.csv --ief IEF.csv --lqd LQ
 python import_prices.py --validate-only prices.csv
 ```
 
-If Yahoo exports daily data instead, use `--frequency daily`. Download the same October 2021–September 2026 span for each ETF, confirm all four source files show Yahoo's `Adj Close`, record **each actual download date** here, then run the importer and review its printed source, count, range, per-ticker valid counts, missing/duplicate months, and PASS/FAIL. The script cannot authenticate a file's provenance from its column name alone; keep the original four downloads for audit. **Do not submit `prices.csv` until it exists and the importer reports PASS.**
+If Yahoo exports daily data instead, use `--frequency daily`. Obtain authentic dated Yahoo `Adj Close` exports for **all four ETFs covering all 60 months**, or an equally documented source's dividend- and split-adjusted daily prices with exact final trading dates and a consistent method across all four series. Preserve the original downloads, record their URLs and actual download dates, verify the final trading observation for each month, then run the importer and review its printed coverage report. The script cannot authenticate provenance from a column name alone. **Do not submit `prices.csv` until its observations and adjustment method are independently verified and it passes validation.**
 
 ## READY FOR SUBMISSION — GitHub links and checkout
 
