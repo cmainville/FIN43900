@@ -104,7 +104,7 @@ MY ANSWER: The double sum includes both combinations because it calculates the c
 
 ## MUST COMPLETE MYSELF — IN-CLASS ACTIVITIES
 
-The following require your participation and are **not marked complete**:
+The oral and partner activities below still require your participation. The student-provided written answers are marked complete.
 
 - [ ] Paste the instructor's D question from the original assignment into your Lab 13 chat and respond there as directed.
 - [ ] Explain to your partner why two risky assets can have lower combined volatility, using the benchmark's verified **10.46%** volatility.
