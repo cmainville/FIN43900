@@ -1,8 +1,8 @@
-# FIN 43900 — Lab 14 Portfolio Baselines (task heading says FIN 41350)
+# FIN 43900 — Lab 14 Portfolio Baselines
 
 ## Status and source limits
 
-The numerical work below was executed on 2026-10-20 with Python 3.14.7. The [instructor's Lab 14 assignment](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-09/lab-14-portfolio-baselines.md), [student handout](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-09/student-handout.md), and [prework](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-09/student-prework.md) were reviewed in their public course repository because they were absent from this local folder. The instructor's repository identifies the course as **FIN 43900**, whereas the task heading says FIN 41350; the Lab 13 files here match the user's connected `cmainville/FIN43900` repository.
+The numerical work below was executed on 2026-10-20 with Python 3.14.7. The [instructor's Lab 14 assignment](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-09/lab-14-portfolio-baselines.md), [student handout](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-09/student-handout.md), and [prework](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-09/student-prework.md) were reviewed in their public FIN 43900 course repository. The Lab 13 files here match the student's `cmainville/FIN43900` repository.
 
 ## COMPLETED BY CODEX — implemented and successfully tested
 
@@ -51,25 +51,27 @@ Executed `python3 mandate.py` after adding E. Its weights total 100.0%; minimum 
 
 1. What is diversification?
 
-   MY ANSWER: [Complete this myself]
+   MY ANSWER: Diversification is a way to reduce portfolio risk by spreading investments across different assets. Combining investments that do not move exactly together can help smooth out overall portfolio volatility.
 
 2. How does diversification work? Why can a correlation below +1 lower portfolio risk?
 
-   MY ANSWER: [Complete this myself]
+   MY ANSWER: Diversification works by combining investments whose returns are not perfectly correlated. When one investment performs poorly, another may perform better or decline less. A correlation below +1 creates opportunities to reduce overall portfolio volatility because the assets do not move perfectly together.
 
 3. Calculate the benchmark's portfolio volatility by hand using the professor's supplied numbers.
 
-   MY ANSWER: [Complete this myself]
+   MY ANSWER: The two-asset portfolio-volatility formula is:
 
-   Blank calculation template (fill the professor's supplied values yourself):
+   $$\sigma_p = \sqrt{w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1w_2\sigma_1\sigma_2\rho}$$
 
-   `σₚ = √(w_IG² σ_IG² + w_EQ² σ_EQ² + 2 w_IG w_EQ σ_IG σ_EQ ρ_IG,EQ)`
+   Using the benchmark's weights, volatilities, and correlation:
 
-   `w_IG = ____` (investment-grade bond weight); `w_EQ = ____` (global equity weight)
+   $$\sigma_p = \sqrt{(0.40^2 \times 0.06^2) + (0.60^2 \times 0.16^2) + 2(0.40)(0.60)(0.06)(0.16)(0.25)}$$
 
-   `σ_IG = ____` (bond volatility); `σ_EQ = ____` (equity volatility); `ρ_IG,EQ = ____` (their correlation)
+   $$\sigma_p = \sqrt{0.000576 + 0.009216 + 0.001152}$$
 
-   `σₚ = √(____________________________) = __________`
+   $$\sigma_p = \sqrt{0.010944}$$
+
+   **Portfolio volatility = 10.46%**
 
 ## Part B — Reflection
 
@@ -77,11 +79,11 @@ Executed `python3 mandate.py` after adding E. Its weights total 100.0%; minimum 
 
 1. Why does the inverse-volatility portfolio allocate such a large percentage to Treasury bills?
 
-   MY ANSWER: [Complete this myself]
+   MY ANSWER: Inverse-volatility weighting allocates more capital to investments with lower volatility. Since Treasury bills have the lowest volatility at 0.5%, compared with 6% for investment-grade bonds and 16% for equities, they receive the largest allocation at approximately 84.3%.
 
 2. Which of the three portfolio baselines would I present to Meridian's CIO first, and why?
 
-   MY ANSWER: [Complete this myself]
+   MY ANSWER: I would present the benchmark first because it is the only portfolio with an expected return above Meridian's 6.5% objective, at 6.8%. However, it fails the 3% reserve requirement because it has no allocation to reserve-eligible assets. I would use it as a starting point and explain that the portfolio needs to be adjusted to satisfy the mandate before it could be recommended.
 
 ## Part C — Code understanding
 
@@ -89,16 +91,16 @@ Executed `python3 mandate.py` after adding E. Its weights total 100.0%; minimum 
 
 **Question to answer aloud:** Why does the double sum include both `(IG, equity)` and `(equity, IG)`, and how does that relate to the `2` in the two-asset formula?
 
-MY ANSWER: [Complete this myself]
+MY ANSWER: The double sum includes both combinations because it calculates the covariance contribution for every pair of assets. Since covariance is symmetric, the IG-equity and equity-IG terms are equal. Adding both terms is equivalent to multiplying their shared covariance contribution by 2 in the two-asset portfolio-volatility formula.
 
 ## Part D — Completion instructions
 
-1. Open **`lab14-notes.md`** to type the personal answers.
+1. Open **`lab14-notes.md`** to review the six student-provided answers and their assignment context.
 2. Navigate to **`# STUDENT QUESTIONS — COMPLETE BEFORE SUBMISSION`**, then **`## Part A — Diversification`**, **`## Part B — Reflection`**, and **`## Part C — Code understanding`**. The source assignment headings are `## Diversification — Learn on your own`, `## Reflect`, and the instructions beginning `Explain the code` in `lab-14-portfolio-baselines.md`.
-3. Replace each `MY ANSWER: [Complete this myself]` marker with your answer. Check the source files for the exact professor wording.
-4. Part A, Question 3 requires the hand calculation using `student-handout.md` → `The digits once`.
+3. The six finalized responses appear immediately after their questions under `MY ANSWER:`. The partner and oral exercises below still require participation.
+4. Part A, Question 3 is the hand calculation using `student-handout.md` → `The digits, once`; the student-provided calculation appears above.
 5. The explanations in Part A, the choice and reasons in Part B, and the code explanation in Part C require your own understanding and judgment.
-6. The instructor explicitly calls for individual submission, learning the diversification concept, working the benchmark by hand, and explaining reflection answers and code to a partner. The `## Checkout — on GitHub` section asks for **GitHub links of your files: md, py and/or other files as needed**. It does **not** explicitly say to submit these written conceptual responses. The answer spaces in this notes file are an additional organizational aid requested for this task; complete them personally before submission or discussion.
+6. The instructor explicitly calls for individual submission, learning the diversification concept, working the benchmark by hand, and explaining reflection answers and code to a partner. The `## Checkout — on GitHub` section asks for **GitHub links of your files: md, py and/or other files as needed**. It does **not** explicitly say to submit these written conceptual responses. This notes section organizes the student-provided responses.
 
 ## MUST COMPLETE MYSELF — IN-CLASS ACTIVITIES
 
@@ -109,21 +111,45 @@ The following require your participation and are **not marked complete**:
 - [ ] Ask AI to quiz you on the line of code you understand least; answer the quiz before receiving its explanation.
 - [ ] Explain `portfolio_variance_and_volatility` line by line to your partner without AI assistance.
 - [ ] Run your partner's `portfolio.py`; set an IG/equity correlation to **1.3**, verify rejection, then restore their original inputs.
-- [ ] Complete your own diversification and reflection responses in the answer spaces under Parts A and B above; complete the code-understanding response under Part C.
+- [x] Six finalized diversification, reflection, and code-understanding responses supplied by the student and inserted above. The oral explanations and partner exercises remain open.
 
 ## THURSDAY PREPARATION — separate from Tuesday checkout
 
-These four funds form a coherent, investable starting universe for the **young professional's five-year home-purchase mandate proposed in `lab13-defense.md`**: short-term government exposure, intermediate Treasury duration, corporate credit, and global equity. The funds launched before the proposed five-year data window, and the selected sleeves can support the mandate's 30% short-term Treasury allocation and five-day liquidity in a proposed portfolio. A future optimizer still needs to enforce that 30% floor, issuer rule, and no-leverage rule. The 10-year Treasury sleeve has duration risk that matters for a five-year purchase horizon. The instructor specifically says the example tickers are for practice, not recommendations; choose or confirm this universe yourself for Project 2. Your Lab 13 home-purchase objective is qualitative, so **you must set its numeric return objective and identify the hard constraint** for Thursday's prework.
+The student has selected **BIL, IEF, LQD, and VT** as the four-fund universe for the **young professional's five-year home-purchase mandate in `lab13-defense.md`**. The funds cover Treasury-bill reserves, intermediate government bonds, investment-grade corporate bonds, and global equity. The mandate's existing hard constraints remain: at least 30% in cash or short-term U.S. Treasuries, five-business-day liquidity, no leverage/short sales/derivatives, a 5% non-exempt corporate issuer limit, and annual rebalancing. A future optimizer must enforce these constraints. IEF's duration risk matters for a five-year purchase horizon. The personal return objective remains qualitative; **the student must decide its numeric target**. No target was invented here.
 
 | Ticker | Fund name | Portfolio role | Verified fund source |
 |---|---|---|---|
-| BIL | State Street SPDR Bloomberg 1-3 Month T-Bill ETF | Treasury-bill exposure and short-term reserve sleeve | [State Street fund page](https://www.ssga.com/us/en/individual/etfs/state-street-spdr-bloomberg-1-3-month-t-bill-etf-bil) |
-| IEF | iShares 7-10 Year Treasury Bond ETF | Intermediate Treasury bond exposure | [iShares fund page](https://www.ishares.com/us/products/239456/ishares-710-year-treasury-bond-etf) |
-| LQD | iShares iBoxx $ Investment Grade Corporate Bond ETF | Investment-grade corporate bond exposure | [iShares fund page](https://www.ishares.com/us/products/239566/lqd-ishares-iboxx-investment-grade-corporate-bond-etf) |
-| VT | Vanguard Total World Stock ETF | Global equity exposure | [Vanguard fund page](https://advisors.vanguard.com/investments/products/new/vt/vanguard-total-world-stock-etf) |
+| BIL | SPDR Bloomberg 1-3 Month T-Bill ETF | Cash equivalent and Treasury-bill reserves | [State Street fund page](https://www.ssga.com/us/en/individual/etfs/state-street-spdr-bloomberg-1-3-month-t-bill-etf-bil) |
+| IEF | iShares 7-10 Year Treasury Bond ETF | Government bonds | [iShares fund page](https://www.ishares.com/us/products/239456/ishares-710-year-treasury-bond-etf) |
+| LQD | iShares iBoxx $ Investment Grade Corporate Bond ETF | Investment-grade corporate bonds | [iShares fund page](https://www.ishares.com/us/products/239566/lqd-ishares-iboxx-investment-grade-corporate-bond-etf) |
+| VT | Vanguard Total World Stock ETF | Global equities | [Vanguard fund page](https://advisors.vanguard.com/investments/products/new/vt/vanguard-total-world-stock-etf) |
 
-**Historical data status (2026-10-20): INCOMPLETE.** `prices.csv` was not created. The instructor specifies [Yahoo Finance → Historical Data → Monthly → Adj Close](https://finance.yahoo.com/). A Yahoo Finance adjusted-close chart request for BIL, using a five-year monthly interval, returned HTTP **429** on 2026-10-20. No adjusted-price rows were downloaded or verified for any of the four funds, so neither five-year completeness nor date alignment can be claimed. The fund pages verify the tickers and roles, but do not establish an aligned five-year adjusted-close series. An alternative documented source is [Alpha Vantage's monthly adjusted series](https://www.alphavantage.co/documentation/), which requires an API key. To finish: use Yahoo's Historical Data interface (or another legitimate adjusted-price source) to obtain dividend/split-adjusted monthly closes for **BIL, IEF, LQD, and VT**; export about five years through the latest common completed month; align on shared month-end dates; sort oldest first; verify no missing/nonpositive prices and roughly 60 monthly rows; then save `prices.csv` with columns `Date,BIL,IEF,LQD,VT`. Record each ticker's exact source, download date, adjustment definition, date range, and row count here. Do not substitute unadjusted market closes for the specified Adj Close series.
+### Historical adjusted prices — incomplete
+
+**Target:** 60 completed months, October 2021 through September 2026 inclusive, with USD adjusted closes for all four ETFs. The output dates would be calendar month-ends (`2021-10-31` through `2026-09-30`); these labels can differ from the source's final trading dates. October 2026 is excluded.
+
+**Retrieval attempt: 2026-10-20.** The instructor specifies Yahoo Finance **Historical Data → Monthly → Adj Close**. A normal request to [Yahoo's BIL monthly chart endpoint](https://query1.finance.yahoo.com/v8/finance/chart/BIL?range=5y&interval=1mo&events=history&includeAdjustedClose=true) returned HTTP **429**. No BIL, IEF, LQD, or VT adjusted-price file was downloaded. The fund pages above establish fund identities and roles, not historical adjusted-price observations. [Yahoo's definition of Adj Close](https://in.help.yahoo.com/kb/finance/adjusted-close-sln28256.html) accounts for splits and dividends. That methodology would be comparable if all four series came from Yahoo's same `Adj Close` field, but the actual four series have **not** been obtained or compared.
+
+| Ticker | Yahoo historical-data page | Price download date | Verified monthly Adj Close observations |
+|---|---|---|---:|
+| BIL | [Yahoo BIL](https://finance.yahoo.com/quote/BIL/history/) | None | 0 of 60 |
+| IEF | [Yahoo IEF](https://finance.yahoo.com/quote/IEF/history/) | None | 0 of 60 |
+| LQD | [Yahoo LQD](https://finance.yahoo.com/quote/LQD/history/) | None | 0 of 60 |
+| VT | [Yahoo VT](https://finance.yahoo.com/quote/VT/history/) | None | 0 of 60 |
+
+Documented alternatives include [Alpha Vantage's `TIME_SERIES_MONTHLY_ADJUSTED`](https://www.alphavantage.co/documentation/), [Tiingo's adjusted end-of-day prices](https://www.tiingo.com/documentation/end-of-day), and [EODHD's adjusted close](https://eodhd.com/financial-apis/api-for-historical-data-and-volumes). They identify dividend/split-adjusted fields but require account credentials or entitlements for these four complete histories; none was available for this work. No ordinary `Close` values were substituted.
+
+**Validation report (2026-10-20):** source prices unavailable; output `prices.csv` absent; observation count **0/60**; requested date range **2021-10-31 to 2026-09-30**; valid observations **BIL 0, IEF 0, LQD 0, VT 0**; missing months **60 per ETF**; duplicate months **not assessable**; shared monthly index **not established**; overall **FAIL / incomplete**. This is an availability failure, not a claim that a bad dataset was validated.
+
+[`import_prices.py`](https://github.com/cmainville/FIN43900/blob/main/import_prices.py) is a standard-library importer for four **manually downloaded Yahoo CSV files**. It requires the `Adj Close` column, accepts either monthly files or daily files (selecting the final available trading-day observation of each month), rejects invalid or missing values and months, labels output rows at calendar month-end, and writes `prices.csv` only after all 60 months pass validation. Run it after obtaining the four authentic files:
+
+```bash
+python import_prices.py --frequency monthly --bil BIL.csv --ief IEF.csv --lqd LQD.csv --vt VT.csv --output prices.csv
+python import_prices.py --validate-only prices.csv
+```
+
+If Yahoo exports daily data instead, use `--frequency daily`. Download the same October 2021–September 2026 span for each ETF, confirm all four source files show Yahoo's `Adj Close`, record **each actual download date** here, then run the importer and review its printed source, count, range, per-ticker valid counts, missing/duplicate months, and PASS/FAIL. The script cannot authenticate a file's provenance from its column name alone; keep the original four downloads for audit. **Do not submit `prices.csv` until it exists and the importer reports PASS.**
 
 ## READY FOR SUBMISSION — GitHub links and checkout
 
-The instructor's actual `## Checkout — on GitHub` instruction is: **GitHub links of your files: md, py and/or other files as needed.** The verified Tuesday files are [portfolio.py](https://github.com/cmainville/FIN43900/blob/main/portfolio.py), [mandate.py](https://github.com/cmainville/FIN43900/blob/main/mandate.py), [test_portfolio.py](https://github.com/cmainville/FIN43900/blob/main/test_portfolio.py), and [lab14-notes.md](https://github.com/cmainville/FIN43900/blob/main/lab14-notes.md). The published links were fetched from the connected repository after upload. `prices.csv` is Thursday preparation, not the Tuesday checkout. The source assignment is [Lab 14 → Checkout](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-09/lab-14-portfolio-baselines.md#checkout--on-github). The technical files are ready; the personal answer spaces and partner activities above remain for the student.
+The instructor's actual `## Checkout — on GitHub` instruction is: **GitHub links of your files: md, py and/or other files as needed.** The Tuesday implementation files are [portfolio.py](https://github.com/cmainville/FIN43900/blob/main/portfolio.py), [mandate.py](https://github.com/cmainville/FIN43900/blob/main/mandate.py), [test_portfolio.py](https://github.com/cmainville/FIN43900/blob/main/test_portfolio.py), and [lab14-notes.md](https://github.com/cmainville/FIN43900/blob/main/lab14-notes.md). The source assignment is [Lab 14 → Checkout](https://github.com/CinderZhang/FIN43900-Fall2026/blob/main/lessons/week-09/lab-14-portfolio-baselines.md#checkout--on-github). The six student-provided written responses are now present; the in-class oral and partner activities remain open. `prices.csv` is Thursday preparation and remains incomplete. The importer is published as a way to finish it from authentic files.
