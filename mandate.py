@@ -111,6 +111,16 @@ CANDIDATES = {
         "Acme Corp bonds": 0.0,
         "Acme Corp stock": 0.0,
     },
+    "E — Meridian Benchmark": {
+        "Cash": 0.0,
+        "Treasury bills": 0.0,
+        "Treasury 10-year note": 0.0,
+        "Global equity index fund": 60.0,
+        "Investment-grade bond fund": 40.0,
+        "Private real estate fund": 0.0,
+        "Acme Corp bonds": 0.0,
+        "Acme Corp stock": 0.0,
+    },
 }
 
 
