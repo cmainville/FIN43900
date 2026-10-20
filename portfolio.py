@@ -7,6 +7,7 @@ them. Edit the inputs below to explore different assumptions.
 import math
 
 
+# Course-authored training values, not observed market estimates.
 ASSETS = (
     "Treasury bills",
     "Treasury 10-year note",
@@ -140,6 +141,7 @@ def baseline_portfolios(expected_returns=EXPECTED_RETURNS,
 def display_portfolio_comparison(portfolios):
     """Print allocations and metrics at the assignment's displayed precision."""
     print("Meridian Foundation portfolio baselines")
+    print("Returns, volatilities, and correlations: course-authored training values")
     print(f"CPI estimate: {CPI_ESTIMATE:.1%}; objective: CPI + 4.0% = {OBJECTIVE_RETURN:.1%}")
     print("Weights in order: " + " / ".join(ASSETS))
     for name, result in portfolios.items():
