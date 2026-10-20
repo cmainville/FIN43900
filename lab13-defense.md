@@ -135,6 +135,8 @@ My client's investment objective:
 
 Grow invested capital to fund a future down payment while preserving sufficient liquidity as the purchase date approaches.
 
+Provisional quantitative objective: **minimize expected portfolio volatility subject to an expected annual nominal portfolio return of at least 4.0%**. The 4.0% threshold is a student-selected planning target, not a guaranteed return or an empirical forecast. The investment horizon is approximately five years; capital preservation and liquidity matter because the portfolio will fund a home purchase. The target may need to be revisited if modeled fund returns or the client's funding needs make it unsuitable. Its feasibility has not yet been established by historical-data-based portfolio analysis.
+
 My client's hard constraints:
 
 - Maintain at least 30% of the portfolio in cash or short-term U.S. Treasury securities.

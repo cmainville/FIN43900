@@ -95,18 +95,18 @@ MY ANSWER: The double sum includes both combinations because it calculates the c
 
 ## MUST COMPLETE MYSELF — IN-CLASS ACTIVITIES
 
-The oral and partner activities below still require your participation. The student-provided written answers are marked complete.
+The student confirmed completion of all six required in-class activities, including the oral and partner exercises. These activity completions are self-reported by the student, not independently verified by Codex.
 
-- [ ] Paste the instructor's D question from the original assignment into your Lab 13 chat and respond there as directed.
-- [ ] Explain to your partner why two risky assets can have lower combined volatility, using the benchmark's verified **10.46%** volatility.
-- [ ] Ask AI to quiz you on the line of code you understand least; answer the quiz before receiving its explanation.
-- [ ] Explain `portfolio_variance_and_volatility` line by line to your partner without AI assistance.
-- [ ] Run your partner's `portfolio.py`; set an IG/equity correlation to **1.3**, verify rejection, then restore their original inputs.
-- [x] Six finalized diversification, reflection, and code-understanding responses supplied by the student and inserted above. The oral explanations and partner exercises remain open.
+- [x] Paste the instructor's D question from the original assignment into your Lab 13 chat and respond there as directed.
+- [x] Explain to your partner why two risky assets can have lower combined volatility, using the benchmark's verified **10.46%** volatility.
+- [x] Ask AI to quiz you on the line of code you understand least; answer the quiz before receiving its explanation.
+- [x] Explain `portfolio_variance_and_volatility` line by line to your partner without AI assistance.
+- [x] Run your partner's `portfolio.py`; set an IG/equity correlation to **1.3**, verify rejection, then restore their original inputs.
+- [x] Six finalized diversification, reflection, and code-understanding responses supplied by the student and inserted above.
 
 ## THURSDAY PREPARATION — separate from Tuesday checkout
 
-The student has selected **BIL, IEF, LQD, and VT** as the four-fund universe for the **young professional's five-year home-purchase mandate in `lab13-defense.md`**. The funds cover Treasury-bill reserves, intermediate government bonds, investment-grade corporate bonds, and global equity. The mandate's existing hard constraints remain: at least 30% in cash or short-term U.S. Treasuries, five-business-day liquidity, no leverage/short sales/derivatives, a 5% non-exempt corporate issuer limit, and annual rebalancing. A future optimizer must enforce these constraints. IEF's duration risk matters for a five-year purchase horizon. The personal return objective remains qualitative; **the student must decide its numeric target**. No target was invented here.
+The student has selected **BIL, IEF, LQD, and VT** as the four-fund universe for the **young professional's five-year home-purchase mandate in `lab13-defense.md`**. The funds cover Treasury-bill reserves, intermediate government bonds, investment-grade corporate bonds, and global equity. The mandate's existing hard constraints remain: at least 30% in cash or short-term U.S. Treasuries, five-business-day liquidity, no leverage/short sales/derivatives, a 5% non-exempt corporate issuer limit, and annual rebalancing. A future optimizer must enforce these constraints. IEF's duration risk matters for a five-year purchase horizon. The student-selected provisional Project 2 objective is to **minimize expected portfolio volatility subject to an expected annual nominal portfolio return of at least 4.0%**. The 4.0% threshold is a planning target, not a guaranteed return or empirical forecast; capital preservation and liquidity take priority because the money will fund a home purchase in approximately five years. Revisit the target if modeled fund returns or client funding needs make it unsuitable. Historical-data-based analysis has not established feasibility. This personal mandate is separate from Meridian Foundation's 6.5% planning objective and 3.0% reserve rule.
 
 | Ticker | Fund name | Portfolio role | Verified fund source |
 |---|---|---|---|
