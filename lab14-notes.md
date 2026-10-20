@@ -93,15 +93,6 @@ Executed `python3 mandate.py` after adding E. Its weights total 100.0%; minimum 
 
 MY ANSWER: The double sum includes both combinations because it calculates the covariance contribution for every pair of assets. Since covariance is symmetric, the IG-equity and equity-IG terms are equal. Adding both terms is equivalent to multiplying their shared covariance contribution by 2 in the two-asset portfolio-volatility formula.
 
-## Part D — Completion instructions
-
-1. Open **`lab14-notes.md`** to review the six student-provided answers and their assignment context.
-2. Navigate to **`# STUDENT QUESTIONS — COMPLETE BEFORE SUBMISSION`**, then **`## Part A — Diversification`**, **`## Part B — Reflection`**, and **`## Part C — Code understanding`**. The source assignment headings are `## Diversification — Learn on your own`, `## Reflect`, and the instructions beginning `Explain the code` in `lab-14-portfolio-baselines.md`.
-3. The six finalized responses appear immediately after their questions under `MY ANSWER:`. The partner and oral exercises below still require participation.
-4. Part A, Question 3 is the hand calculation using `student-handout.md` → `The digits, once`; the student-provided calculation appears above.
-5. The explanations in Part A, the choice and reasons in Part B, and the code explanation in Part C require your own understanding and judgment.
-6. The instructor explicitly calls for individual submission, learning the diversification concept, working the benchmark by hand, and explaining reflection answers and code to a partner. The `## Checkout — on GitHub` section asks for **GitHub links of your files: md, py and/or other files as needed**. It does **not** explicitly say to submit these written conceptual responses. This notes section organizes the student-provided responses.
-
 ## MUST COMPLETE MYSELF — IN-CLASS ACTIVITIES
 
 The oral and partner activities below still require your participation. The student-provided written answers are marked complete.
