@@ -78,22 +78,38 @@ Pearson correlation matrices, asset order VTI/VXUS/XLE/IWM/IAU, rounded to three
 
 ```mermaid
 flowchart TD
-    A[Historical monthly prices] --> B[Validate dates and prices]
-    B --> C[Monthly simple returns]
-    C --> D[Annual return and volatility estimates; correlations]
-    D --> E[Generate 5-point candidate allocations]
-    E --> F{Return and reserve constraints met?}
-    F -- No --> E
-    F -- Yes --> G[Calculate variance and volatility with Lab 14 engine]
-    G --> H[Retain lowest-volatility feasible candidate]
-    H --> E
-    E --> I{Any feasible candidate?}
-    I -- No --> J[Report no mix meets the objective]
-    I -- Yes --> K[Minimum-volatility portfolio]
-    K --> L[Scenario stress tests]
-    J --> L
-    L --> M[Provisional investment decision]
+    A{"Input source"}
+    A -- "CSV" --> B["Validate monthly dates and positive prices"]
+    B --> C["Calculate simple monthly returns"]
+    C --> D{"Use last 36 returns?"}
+    D -- "Yes" --> E["Select most recent 36 returns"]
+    D -- "No" --> F["Use all available returns"]
+    E --> G["Estimate annual returns, sample volatility, and correlations"]
+    F --> G
+    A -- "Meridian" --> H["Use course return, volatility, and correlation inputs"]
+    G --> I["Validate asset universe and correlations"]
+    H --> I
+    I --> J["Build annual covariance with Lab 14 function"]
+    J --> K["Enumerate long-only 5-point allocations totaling 100%"]
+    K --> L{"Another candidate?"}
+    L -- "Yes" --> M["Calculate expected return and reserve weight"]
+    M --> N{"Meets return and reserve minimums?"}
+    N -- "No" --> L
+    N -- "Yes" --> O["Calculate variance and volatility with Lab 14 function"]
+    O --> P{"Lower volatility than saved best?"}
+    P -- "Yes" --> Q["Save this feasible mix"]
+    P -- "No" --> L
+    Q --> L
+    L -- "No" --> R{"Any feasible mix saved?"}
+    R -- "Yes" --> S["Return minimum-volatility mix and counts"]
+    R -- "No" --> T["Return infeasible result"]
+    S --> U["Caller reruns engine for scenario stress tests"]
+    T --> U
+    U --> V["Compare feasible weights in percentage points"]
+    V --> W["Provisional investment decision outside engine"]
 ```
+
+The loop and infeasible branch follow `optimize_portfolio` directly. The app or analysis code initiates scenario reruns; `largest_weight_change` compares two feasible results. The investment decision is a human judgment outside `portfolio.py`.
 
 ## 9–11. Benchmark and optimized results
 
