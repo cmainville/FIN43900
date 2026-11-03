@@ -8,4 +8,4 @@ The reported record is strong. Revenue rose from $226,954 million to $303,154 mi
 
 I would keep this business on my watch list while investigating the durability of its advantage, management, and the cash demands of future growth. This financial screen does not establish those qualities. The simplified owner earnings figure subtracts all capital spending; it does not distinguish maintenance from growth spending.
 
-My trust in this verdict: ____ because ____
+My trust in this verdict: I trust Buffett's verdict to an extent because Costco has consistently strong ROE and growing owner earnings, but I would need to evaluate its competitive advantage and valuation before making an investment decision.
