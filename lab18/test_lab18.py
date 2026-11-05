@@ -61,7 +61,7 @@ class Lab18Tests(unittest.TestCase):
             app = AppTest.from_file(str(Path(__file__).parent / "app.py"), default_timeout=15).run()
         self.assertFalse(app.exception)
         self.assertEqual(len(app.get("vega_lite_chart")), 1)
-        self.assertEqual(len(app.get("dataframe")), 1)
+        self.assertEqual(len(app.get("dataframe")), 2)
 
 
 if __name__ == "__main__":

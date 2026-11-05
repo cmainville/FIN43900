@@ -21,6 +21,7 @@ class LiveSECTests(unittest.TestCase):
             raise RuntimeError("Set SEC_CONTACT_EMAIL before running live SEC tests.")
         cls.cost = sec.analyze("COST")
         cls.jpm = sec.analyze("JPM")
+        cls.nvda = sec.analyze("NVDA")
 
     def test_costco_professor_benchmarks(self):
         expected = [
@@ -37,7 +38,7 @@ class LiveSECTests(unittest.TestCase):
             for metric, value in zip(metrics, benchmark[1:]):
                 actual = row["values"][metric]
                 self.assertEqual(round(actual, 1) if metric == "roe" else actual / 1_000_000, value, metric)
-        self.assertEqual(list(self.cost["checks"].values()), ["Pass", "Pass", "Pass"])
+        self.assertEqual([self.cost["checks"][name] for name in sec.INVESTOR_CHECKS["Warren Buffett"]], ["Pass", "Pass", "Pass"])
         memo = (ROOT / "memos" / "COST.md").read_text()
         self.assertEqual(unsupported_numbers(memo, sec.printed_results(self.cost)), [])
 
@@ -45,10 +46,15 @@ class LiveSECTests(unittest.TestCase):
         self.assertEqual(len(self.jpm["rows"]), 5)
         self.assertTrue(all(row["values"]["capital_spending"] is None for row in self.jpm["rows"]))
         self.assertTrue(all(row["values"]["owner_earnings"] is None for row in self.jpm["rows"]))
-        self.assertEqual(list(self.jpm["checks"].values())[1:], ["Not Known", "Not Known"])
+        self.assertEqual([self.jpm["checks"][name] for name in sec.INVESTOR_CHECKS["Warren Buffett"][1:]], ["Not Known", "Not Known"])
         memo = (ROOT / "memos" / "JPM.md").read_text()
         self.assertIn("Owner earnings therefore cannot be evaluated", memo)
         self.assertEqual(unsupported_numbers(memo, sec.printed_results(self.jpm)), [])
+
+    def test_vti_largest_holding_panel(self):
+        self.assertEqual(self.nvda["ticker"], "NVDA")
+        self.assertEqual(self.nvda["verdicts"], {"Warren Buffett": "Pass", "Cathie Wood": "Pass", "Michael Burry": "Fail"})
+        self.assertEqual(len(self.nvda["checks"]), 7)
 
     def test_dashboard_flags_injected_roe(self):
         from streamlit.testing.v1 import AppTest
