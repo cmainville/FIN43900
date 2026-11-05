@@ -1,11 +1,11 @@
-# FIN439 Lab 19 — Three-Investor SEC Panel
+# FIN439 Lab 18 + Lab 19 — Three-Investor SEC Panel
 
 This builds on Lab 18's Buffett script and Streamlit app. Python computes seven checks for Buffett, Cathie Wood, and Michael Burry from five fiscal years of SEC 10-K facts. Missing facts remain not found or not known. Owner earnings retain Lab 18's simplified definition: operating cash flow less all capital spending.
 
 ## Run
 
 ```bash
-cd FIN43900/lab18
+cd "FIN43900/Lab18 + Lab19"
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
